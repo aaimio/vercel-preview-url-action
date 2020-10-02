@@ -1,0 +1,18 @@
+name: "Capture Vercel Preview URL"
+author: "Aaron Imming <aaim@protonmail.com>"
+description: "Capture a Vercel preview URL and feed it into your next GitHub action."
+branding:
+  icon: "triangle"
+  color: "black"
+inputs:
+  vercel_bot_name:
+    description: "The name of the Vercel account commenting on pull requests."
+    required: false
+    default: "vercel[bot]"
+  preview_url_regexp:
+    description: "Regular expression pattern to capture the preview URL."
+    required: false
+    default: 'Preview: \[(.*)\]' # Do use single quotes, do NOT use delimiters.
+runs:
+  using: "node12"
+  main: "dist/index.js"

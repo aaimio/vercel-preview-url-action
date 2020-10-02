@@ -1,0 +1,24 @@
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - [opened]
+  issue_comment:
+    types:
+      - [edited]
+
+jobs:
+  get_vercel_preview_url:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: aaron-binary/vercel-preview-url-action
+        id: vercel_preview_url
+        outputs:
+          vercel_preview_url:
+            id: vercel_preview_url
+            description: "The preview URL for the pull request's Vercel deployment."
+
+runs:
+  using: "node12"
+  main: "dist/index.js"
