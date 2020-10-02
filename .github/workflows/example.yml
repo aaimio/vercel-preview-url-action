@@ -1,3 +1,4 @@
+name: Capture Vercel preview URL
 on:
   pull_request:
     branches:
