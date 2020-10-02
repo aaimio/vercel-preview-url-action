@@ -3,11 +3,9 @@ on:
   pull_request:
     branches:
       - master
-    types:
-      - [opened]
+    types: [opened]
   issue_comment:
-    types:
-      - [edited]
+    types: [edited]
 
 jobs:
   get_vercel_preview_url:
