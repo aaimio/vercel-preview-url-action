@@ -1,0 +1,39 @@
+{
+  "author": "Aaron Imming <aaim@protonmail.com>",
+  "name": "vercel-preview-url-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md}": "prettier --write"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx ncc build index.js --license licenses.txt --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaron-binary/deriv-app-id-action.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaron-binary/deriv-app-id-action/issues"
+  },
+  "homepage": "https://github.com/aaron-binary/deriv-app-id-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@deriv/deriv-api": "^1.0.7",
+    "ws": "^7.3.1"
+  },
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "2.1.2"
+  }
+}

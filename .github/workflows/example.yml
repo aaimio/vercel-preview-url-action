@@ -1,0 +1,17 @@
+name: Capture Vercel preview URL
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [opened]
+  issue_comment:
+    types: [edited]
+
+jobs:
+  capture_vercel_preview_url:
+    name: Capture Vercel preview URL
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: aaron-binary/vercel-preview-url-action@master
+        id: vercel_preview_url
