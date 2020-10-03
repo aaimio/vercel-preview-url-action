@@ -10,6 +10,20 @@ const runAction = async () => {
     console.log("Comment did not originate from Vercel bot.", {
       vercel_bot_name,
     });
+
+    if (core.getInput("GITHUB_TOKEN")) {
+      const octokit = new Octokit();
+
+      await octokit.actions.cancelWorkflowRun({
+        ...github.context.repo,
+        run_id: github.context.runId,
+      });
+
+      // Wait a maximum of 1 minute for the action to be cancelled.
+      await new Promise((resolve) => setTimeout(resolve, 60000));
+    }
+
+    // If no GitHub token or timeout has passed, fail action.
     process.exit(1);
   }
 

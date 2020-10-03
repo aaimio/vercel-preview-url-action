@@ -15,3 +15,5 @@ jobs:
     steps:
       - uses: aaron-binary/vercel-preview-url-action@master
         id: vercel_preview_url
+    with:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
