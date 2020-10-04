@@ -13,10 +13,10 @@ Please note:
 
 ## Inputs
 
-- `vercel_bot_name`: The name of the Vercel account commenting on pull requests. (default: `vercel[bot]`)
 - `cancel_on_strings`: Cancel the action when any of these (comma separated) strings appear in the edited comment.
-- `preview_url_regexp`: Regular expression pattern (without delimiters) to capture the preview URL. Ensure first capture group captures the preview URL. (default: `Preview: \[(.*)\]`)
 - `GITHUB_TOKEN`: Pass this (as `${{secrets.GITHUB_TOKEN}}`) to cancel actions instead of failing them.
+- `preview_url_regexp`: Regular expression pattern (without delimiters) to capture the preview URL. Ensure first capture group captures the preview URL. (default: `Preview: \[(.*)\]`)
+- `vercel_bot_name`: The name of the Vercel account commenting on pull requests. (default: `vercel[bot]`)
 
 ## Outputs
 
