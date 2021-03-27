@@ -2,7 +2,7 @@
   "author": "Aaron Imming <aaim@protonmail.com>",
   "name": "vercel-preview-url-action",
   "version": "1.0.0",
-  "description": "",
+  "description": "Capture a Vercel preview URL and feed it into your next GitHub action.",
   "main": "index.js",
   "husky": {
     "hooks": {
@@ -14,27 +14,25 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx ncc build index.js --license licenses.txt --minify",
-    "vercel-build": ""
+    "build": "npx ncc build index.js --license licenses.txt --minify"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aaron-binary/deriv-app-id-action.git"
+    "url": "git+https://github.com/aaron-binary/vercel-preview-url-action.git"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aaron-binary/deriv-app-id-action/issues"
+    "url": "https://github.com/aaron-binary/vercel-preview-url-action/issues"
   },
-  "homepage": "https://github.com/aaron-binary/deriv-app-id-action#readme",
+  "homepage": "https://github.com/aaron-binary/vercel-preview-url-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
     "@deriv/deriv-api": "^1.0.7",
-    "@octokit/action": "^3.1.2",
-    "ws": "^7.4.3"
+    "@octokit/action": "^3.7.0"
   },
   "devDependencies": {
-    "husky": "^4.3.0",
+    "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "prettier": "2.2.1"
   }
