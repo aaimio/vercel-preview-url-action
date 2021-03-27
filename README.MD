@@ -2,13 +2,13 @@
 
 Capture a Vercel preview URL and feed it into your next GitHub action.
 
-1. This action runs whenever an edit is made to a pull request comment (see `example.yml` below).
+1. This action should run whenever an edit is made to a pull request comment (see `example.yml` below).
 2. It checks whether the editor of the comment is Vercel's bot account on GitHub.
 3. It attempts to extract the preview URL from the comment and sets it as the action's output so that you can feed it into your next action.
 
 Please note:
 
-- This action only succeeds when a preview URL was found, it gets cancelled (or fails) on every other event.
+- This action only succeeds when a preview URL was found, it gets cancelled (if `GITHUB_TOKEN` is passed) or fails on every other event.
 - This action will keep executing for every edit. When a new commit is pushed, Vercel may edit the comment again, triggering this action. Please ensure you're building in logic into your next action to handle this.
 
 ## Inputs
