@@ -9,7 +9,7 @@ Capture a Vercel preview URL and feed it into your next GitHub action.
 Please note:
 
 - This action only succeeds when a preview URL was found, it gets cancelled (if `GITHUB_TOKEN` is passed) or fails on every other event.
-- This action will keep executing for every edit. When a new commit is pushed, Vercel may edit the comment again, triggering this action. Please ensure you're building in logic into your next action to handle this.
+- This action will keep executing for every edit (if following `issue_comment.edited` trigger as per `example.yml`). When a new commit is pushed, Vercel may edit the comment again, triggering this action. Please ensure you're building in logic into your next action to handle this.
 
 ## Inputs
 
