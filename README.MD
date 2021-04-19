@@ -12,18 +12,18 @@ Please note:
 - This action only succeeds when a preview URL was found, it gets cancelled (if `GITHUB_TOKEN` is passed) or fails on every other event.
 - This action will keep executing for every edit (if following `issue_comment.edited` trigger as per `example.yml`). When a new commit is pushed, Vercel may edit the comment again, triggering this action. Please ensure you're building in logic into your next action to handle this.
 
-## Inputs
+# Inputs
 
 - `cancel_on_strings`: Cancel the action when any of these (comma separated) strings appear in the edited comment.
 - `GITHUB_TOKEN`: Pass this (as `${{secrets.GITHUB_TOKEN}}`) to cancel actions instead of failing them.
 - `preview_url_regexp`: Regular expression pattern (without delimiters) to capture the preview URL. Ensure first capture group captures the preview URL. (default: `Preview: \[(.*)\]`)
 - `vercel_bot_name`: The name of the Vercel account commenting on pull requests. (default: `vercel[bot]`)
 
-## Outputs
+# Outputs
 
 - `vercel_preview_url`: The preview URL which can be accessed through the [`steps` context](https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#steps-context).
 
-## Example
+# Example
 
 The example below captures the Vercel preview URL and comments with it on the pull request.
 
@@ -56,3 +56,7 @@ jobs:
               body: 'The preview URL is: ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}.'
             });
 ```
+
+# Example usages
+
+- **Automated Lighthouse metrics to your PR with Vercel and GitHub Actions**: [OskarAhl/Lighthouse-github-action-comment](https://github.com/OskarAhl/Lighthouse-github-action-comment)
