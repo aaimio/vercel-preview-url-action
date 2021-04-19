@@ -18,13 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aaron-binary/vercel-preview-url-action.git"
+    "url": "git+https://github.com/aaimio/vercel-preview-url-action.git"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aaron-binary/vercel-preview-url-action/issues"
+    "url": "https://github.com/aaimio/vercel-preview-url-action/issues"
   },
-  "homepage": "https://github.com/aaron-binary/vercel-preview-url-action#readme",
+  "homepage": "https://github.com/aaimio/vercel-preview-url-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",

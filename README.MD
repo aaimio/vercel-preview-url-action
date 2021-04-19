@@ -38,7 +38,7 @@ jobs:
     name: Capture Vercel preview URL
     runs-on: "ubuntu-latest"
     steps:
-      - uses: aaron-binary/vercel-preview-url-action@master
+      - uses: aaimio/vercel-preview-url-action@master
         id: vercel_preview_url
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
