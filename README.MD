@@ -3,6 +3,7 @@
 Capture a Vercel preview URL and feed it into your next GitHub action.
 
 1. This action should run whenever an edit is made to a pull request comment (see `example.yml` below).
+    - _If you wish to capture the preview URL on `push` or `pull_request` check out [zentered/vercel-preview-url](https://github.com/zentered/vercel-preview-url)_
 2. It checks whether the editor of the comment is Vercel's bot account on GitHub.
 3. It attempts to extract the preview URL from the comment and sets it as the action's output so that you can feed it into your next action.
 
