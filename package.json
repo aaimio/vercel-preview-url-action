@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx ncc build index.js --license licenses.txt --minify"
+    "build": "npx @vercel/ncc build index.js --license licenses.txt --minify",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -28,12 +29,11 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "@deriv/deriv-api": "^1.0.7",
     "@octokit/action": "^3.7.0"
   },
   "devDependencies": {
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.4",
-    "prettier": "2.2.1"
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2"
   }
 }
