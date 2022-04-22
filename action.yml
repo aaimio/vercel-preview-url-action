@@ -16,7 +16,7 @@ inputs:
   preview_url_regexp:
     description: "Regular expression pattern to capture the preview URL. Ensure first capture group captures the preview URL."
     required: false
-    default: 'Preview: \[(.*)\]' # Do use single quotes, do NOT use delimiters.
+    default: '\[Visit Preview\]\((.*.sx)\)' # Do use single quotes, do NOT use delimiters.
   vercel_bot_name:
     description: "The name of the Vercel account commenting on pull requests."
     required: false
