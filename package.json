@@ -21,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/aaimio/vercel-preview-url-action.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/aaimio/vercel-preview-url-action/issues"
   },
