@@ -29,7 +29,7 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "@octokit/action": "^3.7.0"
+    "@octokit/action": "^4.0.10"
   },
   "devDependencies": {
     "husky": "^7.0.2",
