@@ -2,7 +2,7 @@ name: Capture Vercel preview URL
 
 on:
   issue_comment:
-    types: [edited]
+    types: [created, edited]
 
 jobs:
   capture_vercel_preview_url:
