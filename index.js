@@ -71,8 +71,8 @@ const runAction = async () => {
   }
 
   if (vercel_preview_url) {
-    console.log("Found preview URL.", { vercel_preview_url });
-    core.setOutput("vercel_preview_url", vercel_preview_url);
+    console.log("Found preview URL.", { vercelPreviewUrl });
+    core.setOutput("vercel_preview_url", vercelPreviewUrl);
     process.exit(0);
     return;
   }
