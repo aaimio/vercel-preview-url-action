@@ -20,8 +20,7 @@ const cancelAction = async () => {
 };
 
 const runAction = async () => {
-  const { payload } = github.context;
-  const { comment } = payload;
+  const { comment } = github.context.payload;
 
   if (!comment) {
     console.log("Action triggered on non-comment event.");
@@ -34,41 +33,56 @@ const runAction = async () => {
     console.log("Comment did not originate from Vercel bot.", {
       vercel_bot_name,
     });
+
     await cancelAction();
   }
 
-  const cancel_on_strings = core.getInput("cancel_on_strings").split(",");
+  const cancelOnStrings = core.getInput("cancel_on_strings").split(",");
 
-  if (cancel_on_strings.some((word) => comment.body.includes(word))) {
+  if (cancelOnStrings.some((word) => comment.body.includes(word))) {
     console.log("Comment contained a word that should cancel the action.", {
-      cancel_on_strings,
+      cancelOnStrings,
       comment: comment.body,
     });
+
     await cancelAction();
   }
 
   const preview_url_regexp = new RegExp(core.getInput("preview_url_regexp"));
-  const regex_matches = comment.body.match(preview_url_regexp);
+  const regexMatches = comment.body.match(preview_url_regexp);
 
-  if (!regex_matches) {
+  if (!regexMatches) {
     console.log("Unable to find a preview URL in comment's body.", {
       comment: comment.body,
     });
+
     await cancelAction();
   }
 
-  const vercel_preview_url = regex_matches[1];
+  let vercelPreviewUrl = "";
+
+  for (let i = 1; i < regexMatches.length; i++) {
+    const regexMatch = regexMatches[i];
+
+    if (regexMatch) {
+      vercelPreviewUrl = regexMatch;
+      break;
+    }
+  }
 
   if (vercel_preview_url) {
     console.log("Found preview URL.", { vercel_preview_url });
     core.setOutput("vercel_preview_url", vercel_preview_url);
     process.exit(0);
-  } else {
-    console.log(
-      "The regular expression is in an invalid format. Please ensure the first capture group caputures the preview URL."
-    );
-    process.exit(1);
+    return;
   }
+
+  console.log(
+    "The regular expression was not able to capture the preview URL. " +
+      "Please ensure at least 1 capture group matches the preview URL's pattern."
+  );
+
+  process.exit(1);
 };
 
 runAction();
