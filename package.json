@@ -1,7 +1,7 @@
 {
   "author": "Aaron Imming <aaim@protonmail.com>",
   "name": "vercel-preview-url-action",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Capture a Vercel preview URL and feed it into your next GitHub action.",
   "main": "index.js",
   "husky": {
@@ -13,7 +13,7 @@
     "*.{js,md}": "prettier --write"
   },
   "scripts": {
-    "build": "npx @vercel/ncc build index.ts --license licenses.txt --minify",
+    "build": "npx @vercel/ncc build index.ts --license licenses.txt",
     "test": "jest --verbose",
     "prepare": "husky install"
   },
