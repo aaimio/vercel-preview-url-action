@@ -13620,13 +13620,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __importDefault(__nccwpck_require__(6546));
-const github_1 = __importDefault(__nccwpck_require__(424));
+const github_1 = __nccwpck_require__(424);
 const action_1 = __nccwpck_require__(7617);
 const index_utils_1 = __nccwpck_require__(7822);
 const cancelAction = () => __awaiter(void 0, void 0, void 0, function* () {
     if (core_1.default.getInput("GITHUB_TOKEN")) {
         const octokit = new action_1.Octokit();
-        yield octokit.actions.cancelWorkflowRun(Object.assign(Object.assign({}, github_1.default.context.repo), { run_id: github_1.default.context.runId }));
+        yield octokit.actions.cancelWorkflowRun(Object.assign(Object.assign({}, github_1.context.repo), { run_id: github_1.context.runId }));
         // Wait a maximum of 1 minute for the action to be cancelled.
         yield new Promise((resolve) => setTimeout(resolve, 60000));
     }
@@ -13634,7 +13634,7 @@ const cancelAction = () => __awaiter(void 0, void 0, void 0, function* () {
     process.exit(1);
 });
 const runAction = () => __awaiter(void 0, void 0, void 0, function* () {
-    const { comment } = github_1.default.context.payload;
+    const { comment } = github_1.context.payload;
     if (!comment) {
         console.log("Action triggered on non-comment event.");
         yield cancelAction();

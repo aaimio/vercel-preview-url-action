@@ -1,5 +1,5 @@
 import core from "@actions/core";
-import github from "@actions/github";
+import { context } from "@actions/github";
 import { Octokit } from "@octokit/action";
 import { getPreviewUrlFromString } from "./index.utils";
 
@@ -8,8 +8,8 @@ const cancelAction = async () => {
     const octokit = new Octokit();
 
     await octokit.actions.cancelWorkflowRun({
-      ...github.context.repo,
-      run_id: github.context.runId,
+      ...context.repo,
+      run_id: context.runId,
     });
 
     // Wait a maximum of 1 minute for the action to be cancelled.
@@ -21,7 +21,7 @@ const cancelAction = async () => {
 };
 
 const runAction = async () => {
-  const { comment } = github.context.payload;
+  const { comment } = context.payload;
 
   if (!comment) {
     console.log("Action triggered on non-comment event.");
