@@ -13615,16 +13615,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core_1 = __importDefault(__nccwpck_require__(6546));
+const core_1 = __nccwpck_require__(6546);
 const github_1 = __nccwpck_require__(424);
 const action_1 = __nccwpck_require__(7617);
 const index_utils_1 = __nccwpck_require__(7822);
 const cancelAction = () => __awaiter(void 0, void 0, void 0, function* () {
-    if (core_1.default.getInput("GITHUB_TOKEN")) {
+    if ((0, core_1.getInput)("GITHUB_TOKEN")) {
         const octokit = new action_1.Octokit();
         yield octokit.actions.cancelWorkflowRun(Object.assign(Object.assign({}, github_1.context.repo), { run_id: github_1.context.runId }));
         // Wait a maximum of 1 minute for the action to be cancelled.
@@ -13640,7 +13637,7 @@ const runAction = () => __awaiter(void 0, void 0, void 0, function* () {
         yield cancelAction();
         return;
     }
-    const vercelBotName = core_1.default.getInput("vercel_bot_name");
+    const vercelBotName = (0, core_1.getInput)("vercel_bot_name");
     const { login } = comment.user;
     if (login !== vercelBotName) {
         console.log("Comment did not originate from Vercel bot.", {
@@ -13648,7 +13645,7 @@ const runAction = () => __awaiter(void 0, void 0, void 0, function* () {
         });
         yield cancelAction();
     }
-    const cancelOnStrings = core_1.default.getInput("cancel_on_strings").split(",");
+    const cancelOnStrings = (0, core_1.getInput)("cancel_on_strings").split(",");
     const { body } = comment;
     if (cancelOnStrings.some((word) => body.includes(word))) {
         console.log("Comment contained a word that should cancel the action.", {
@@ -13657,14 +13654,14 @@ const runAction = () => __awaiter(void 0, void 0, void 0, function* () {
         });
         yield cancelAction();
     }
-    const vercelPreviewUrl = (0, index_utils_1.getPreviewUrlFromString)(body, core_1.default.getInput("preview_url_regexp"));
+    const vercelPreviewUrl = (0, index_utils_1.getPreviewUrlFromString)(body, (0, core_1.getInput)("preview_url_regexp"));
     if (!vercelPreviewUrl) {
         console.log("The regular expression was not able to capture the preview URL. " +
             "Please ensure at least 1 capture group matches the preview URL's pattern.");
         process.exit(1);
     }
     console.log("Found preview URL.", { vercelPreviewUrl });
-    core_1.default.setOutput("vercel_preview_url", vercelPreviewUrl);
+    (0, core_1.setOutput)("vercel_preview_url", vercelPreviewUrl);
     process.exit(0);
 });
 runAction();

@@ -1,10 +1,10 @@
-import core from "@actions/core";
+import { getInput, setOutput } from "@actions/core";
 import { context } from "@actions/github";
 import { Octokit } from "@octokit/action";
 import { getPreviewUrlFromString } from "./index.utils";
 
 const cancelAction = async () => {
-  if (core.getInput("GITHUB_TOKEN")) {
+  if (getInput("GITHUB_TOKEN")) {
     const octokit = new Octokit();
 
     await octokit.actions.cancelWorkflowRun({
@@ -29,7 +29,7 @@ const runAction = async () => {
     return;
   }
 
-  const vercelBotName = core.getInput("vercel_bot_name");
+  const vercelBotName = getInput("vercel_bot_name");
   const { login } = comment.user;
 
   if (login !== vercelBotName) {
@@ -40,7 +40,7 @@ const runAction = async () => {
     await cancelAction();
   }
 
-  const cancelOnStrings = core.getInput("cancel_on_strings").split(",");
+  const cancelOnStrings = getInput("cancel_on_strings").split(",");
   const { body } = comment;
 
   if (cancelOnStrings.some((word) => body.includes(word))) {
@@ -54,7 +54,7 @@ const runAction = async () => {
 
   const vercelPreviewUrl = getPreviewUrlFromString(
     body,
-    core.getInput("preview_url_regexp")
+    getInput("preview_url_regexp")
   );
 
   if (!vercelPreviewUrl) {
@@ -67,7 +67,7 @@ const runAction = async () => {
   }
 
   console.log("Found preview URL.", { vercelPreviewUrl });
-  core.setOutput("vercel_preview_url", vercelPreviewUrl);
+  setOutput("vercel_preview_url", vercelPreviewUrl);
   process.exit(0);
 };
 
