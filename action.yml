@@ -8,7 +8,7 @@ inputs:
   cancel_on_strings:
     description: Cancel the action when comment contains these words (comma separated list)
     required: false
-    default: "Deployment in progress,Preview: Failed,In Progress,🔄 Building"
+    default: "Deployment in progress,Preview: Failed,In Progress,🔄 Building,❌ Failed"
   GITHUB_TOKEN:
     description: >-
       GitHub actions token to cancel the action in case preview URL could not be
