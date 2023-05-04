@@ -55,7 +55,7 @@ jobs:
     name: Capture Vercel preview URL
     runs-on: "ubuntu-latest"
     steps:
-      - uses: aaimio/vercel-preview-url-action@v2.1.0
+      - uses: aaimio/vercel-preview-url-action@v2.2.0
         id: vercel_preview_url
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
